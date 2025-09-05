@@ -22,7 +22,6 @@ describe('Component', () => {
 
     it('should increment the age of the user', () => {
         const mockData = mockUser();
-        const mockAge = mockData.age;
         component.setUser(mockData);
         component.incrementAge();
         expect(component.age).toEqual(mockData.age + 1);
@@ -37,15 +36,12 @@ describe('Component', () => {
 
     it('should decrement the age of the user', () => {
         const mockData = mockUser();
-        const mockAge = mockData.age;
         component.setUser(mockData);
         component.decrementAge();
-        expect(component.age).toEqual(mockAge - 1);
+        expect(component.age).toEqual(mockData.age - 1);
     });
 
     it('should throw on decrement age if user is undefined', () => {
-        const mockData = mockUser();
-        component.setUser(mockData);
         expect(() => {
             component.setUser(void 0);
             component.decrementAge();
