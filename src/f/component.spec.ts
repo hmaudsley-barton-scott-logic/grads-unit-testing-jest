@@ -12,8 +12,8 @@ describe('Shop', () => {
     it('should add an order', () => {
         const car = mockCar();
         component.newOrder(car, 10000);
-        expect(component.orders).toEqual(
-            expect.arrayContaining([expect.objectContaining({ car: car, price: 10000 })])
-        );
+        expect(component.orders).toEqual([
+            expect.objectContaining({ car: car, price: 10000 })
+        ]);
     });
 });
