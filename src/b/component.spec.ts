@@ -19,7 +19,7 @@ describe('Profile', () => {
         expect(component.isAdmin).toEqual(false);
     });
 
-    it('should throw an error if user is not set', () => {
-        expect(() => component.isAdmin).toThrow('User not set');
+    it('should return false if user is not set', () => {
+        expect(component.isAdmin).toEqual(false);
     });
 });
