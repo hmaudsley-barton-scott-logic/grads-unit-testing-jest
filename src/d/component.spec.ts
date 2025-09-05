@@ -1,3 +1,4 @@
+import { mock } from 'node:test';
 import { Component, User } from './component';
 
 describe('Component', () => {
@@ -11,8 +12,6 @@ describe('Component', () => {
     }
 
     it('should return age as undefined if no user', () => {
-        const mockData = mockUser();
-        component.setUser(mockData);
         expect(component.age).toBeUndefined();
     });
 
@@ -24,14 +23,13 @@ describe('Component', () => {
 
     it('should increment the age of the user', () => {
         const mockData = mockUser();
+        const mockAge = mockData.age;
         component.setUser(mockData);
         component.incrementAge();
-        expect(component.age).toEqual(41);
+        expect(component.age).toEqual(mockAge + 1);
     });
 
     it('should throw on increment age if user is undefined', () => {
-        const mockData = mockUser();
-        component.setUser(mockData);
         expect(() => {
             component.setUser(void 0);
             component.incrementAge();
@@ -40,9 +38,10 @@ describe('Component', () => {
 
     it('should decrement the age of the user', () => {
         const mockData = mockUser();
+        const mockAge = mockData.age;
         component.setUser(mockData);
         component.decrementAge();
-        expect(component.age).toEqual(39);
+        expect(component.age).toEqual(mockAge - 1);
     });
 
     it('should throw on decrement age if user is undefined', () => {
