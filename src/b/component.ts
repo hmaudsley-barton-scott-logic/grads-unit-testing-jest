@@ -10,9 +10,6 @@ export class Profile {
     // you'll find a bug! Have a go at fixing it and make sure your
     // tests pass. I think we can use the user isAdmin field :)
     public get isAdmin(): boolean {
-        if (!this.user) {
-            throw new Error('User not set');
-        }
-        return this.user.isAdmin;
+        return this.user?.isAdmin ?? false;
     }
 }
