@@ -9,7 +9,7 @@ describe('Engine', () => {
     });
 
     it('should get stopped status at start', () => {
-        expect(component.status).toBe('stopped');
+        expect(component.status).toEqual('stopped');
     });
 
     it('should start', () => {
