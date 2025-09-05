@@ -7,13 +7,19 @@ describe('Profile', () => {
         component = new Profile();
     });
 
-    // remember to remove the 'should exist' tests - they're just placeholders
-    it('should exist', () => {
-        expect(component).toBeTruthy();
+    it('should identify an admin as an admin', () => {
+        const user: User = { name: 'Alice', isAdmin: true };
+        component.user = user;
+        expect(component.isAdmin).toEqual(true);
     });
 
-    it('should correctly identify whether the user is an admin', () => {
-        component.user = <User>{ isAdmin: true };
-        expect(component.isAdmin).toBeDefined();
+    it('should identify a non-admin as not an admin', () => {
+        const user: User = { name: 'Bob', isAdmin: false };
+        component.user = user;
+        expect(component.isAdmin).toEqual(false);
+    });
+
+    it('should throw an error if user is not set', () => {
+        expect(() => component.isAdmin).toThrow('User not set');
     });
 });
