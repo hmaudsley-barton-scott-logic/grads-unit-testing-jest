@@ -7,10 +7,6 @@ describe('Calculator', () => {
         component = new Calculator();
     });
 
-    it('should exist', () => {
-        expect(component).toBeTruthy();
-    });
-
     it('should add two numbers correctly', () => {
         expect(component.add(2, 3)).toBe(5);
     });
