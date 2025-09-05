@@ -1,25 +1,30 @@
 import { Component, User } from './component';
 
-const mockData: User = { id: 'foo', name: 'bar', age: 40 };
-
 describe('Component', () => {
     let component: Component;
     beforeEach(() => {
         component = new Component();
-        component.setUser(mockData);
     });
+
+    function mockUser(): User {
+        return <User>{ id: 'foo', name: 'bar', age: 40 };
+    }
 
     it('should return age as undefined if no user', () => {
         expect(component.age).toBeUndefined();
     });
 
     it('should correctly identify the user age', () => {
+        const mockData = mockUser();
+        component.setUser(mockData);
         expect(component.age).toEqual(mockData.age);
     });
 
     it('should increment the age of the user', () => {
+        const mockData = mockUser();
+        component.setUser(mockData);
         component.incrementAge();
-        expect(component.age).toEqual(41);
+        expect(component.age).toEqual(mockData.age + 1);
     });
 
     it('should throw on increment age if user is undefined', () => {
@@ -30,8 +35,10 @@ describe('Component', () => {
     });
 
     it('should decrement the age of the user', () => {
+        const mockData = mockUser();
+        component.setUser(mockData);
         component.decrementAge();
-        expect(component.age).toEqual(39);
+        expect(component.age).toEqual(mockData.age - 1);
     });
 
     it('should throw on decrement age if user is undefined', () => {
