@@ -1,4 +1,3 @@
-import { mock } from 'node:test';
 import { Component, User } from './component';
 
 describe('Component', () => {
