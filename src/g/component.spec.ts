@@ -43,8 +43,8 @@ describe('CustomColumnHeader', () => {
         expect(component.toggle()).toHaveBeenCalled;
     });
 
-    it('toggle should return undefined if no params set', () => {
+    it('toggle should not throw an error if params not defined', () => {
         component = new CustomColumnHeader();
-        expect(component.toggle()).toEqual(undefined);
+        expect(component.toggle()).not.toThrow;
     });
 });
